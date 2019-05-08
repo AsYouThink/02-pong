@@ -19,7 +19,7 @@ export default class Game {
 
   render() {
     // More code goes here....
-    this.gameElement.innerHTML = '';
+    // this.gameElement.innerHTML = '';
     this.board.render(this.svg);
   }
 }
