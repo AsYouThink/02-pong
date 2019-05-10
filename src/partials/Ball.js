@@ -68,6 +68,7 @@ export default class Ball {
     this.x = this.x + this.vx;
     this.y = this.y + this.vy;
     this.wallCollision();
+    this.goalCollision(player1, player2);
     this.paddleCollision(player1, player2)
     svg.appendChild(circle);
     

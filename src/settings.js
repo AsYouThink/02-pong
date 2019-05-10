@@ -4,7 +4,8 @@ export const PADDLE_WIDTH = 8,
              PADDLE_HEIGHT = 56, 
              BOARD_GAP = 10,
              SPEED = 10,
-             RADIUS = 8;
+             RADIUS = 8,
+             TEXT_SIZE = 30;
 
 export const KEYS = {
     p1up: 'a',
