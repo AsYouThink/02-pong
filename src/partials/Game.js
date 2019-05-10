@@ -16,6 +16,7 @@ export default class Game {
     this.element = element;
     this.width = width;
     this.height = height;
+    this.paused = false;
     this.gameElement = document.getElementById(this.element);
     this.board = new Board(this.width, this.height);
     const boardMid = (this.height - PADDLE_HEIGHT) / 2;
@@ -25,10 +26,18 @@ export default class Game {
     this.ball = new Ball(this.width, this.height, RADIUS);
     this.score1 = new Score(this.width/2 - 50, 30);
     this.score2 = new Score(this.width/2 + 25, 30);
+    document.addEventListener("keydown", (event) => {
+      if(event.key === KEYS.pause) {
+        this.paused = !this.paused;
+      }
+    });
     // Other code goes here...
   }
 
   render() {
+    if (this.paused) {
+        return;
+      }
     // More code goes here....
     this.gameElement.innerHTML = '';
     let svg = document.createElementNS(SVG_NS, 'svg');
@@ -43,4 +52,4 @@ export default class Game {
     this.score1.render(svg, this.paddle1.getScore());
     this.score2.render(svg, this.paddle2.getScore());
   }
-}
+  }
