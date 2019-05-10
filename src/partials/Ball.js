@@ -1,12 +1,13 @@
 import { SVG_NS} from '../settings';
-
+import audioFile from '../../public/sounds/pong-01.wav';
 export default class Ball {
   constructor(boardWidth, boardHeight, radius) {
     this.boardWidth = boardWidth;
     this.boardHeight = boardHeight;
     this.radius = radius;
     this.direction = 1;
-    this.ping = new Audio("public/sounds/pong-01.wav");
+    this.ping = new Audio(audioFile);
+           
     this.reset();
   }
   reset() {
