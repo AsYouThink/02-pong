@@ -33,6 +33,10 @@ export default class Ball {
             player2.increaseScore();
             this.direction = this.direction * -1;
             this.reset();
+        } else if (this.x >= this.boardWidth){
+            player1.increaseScore();
+            this.direction = this.direction * -1;
+            this.reset();
         }
 
       

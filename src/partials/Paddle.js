@@ -27,6 +27,9 @@ export default class Paddle {
     increaseScore() {
         this.score++;
     }
+    getScore() {
+        return this.score;
+    }
     
     moveUp() {
         this.y = Math.max(0, this.y - this.speed);

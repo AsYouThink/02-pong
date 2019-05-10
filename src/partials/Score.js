@@ -5,7 +5,7 @@ import { SVG_NS, TEXT_SIZE } from '../settings';
       this.x = xPosition;
       this.y = yPosition;
     }
-    render(svg) {
+    render(svg, score) {
       let text = document.createElementNS(SVG_NS, 'text');
       text.setAttributeNS(null, "fill", "#fff");
       text.setAttributeNS(null, "font-size", TEXT_SIZE);
