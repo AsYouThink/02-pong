@@ -17,6 +17,7 @@ export default class Game {
     this.width = width;
     this.height = height;
     this.paused = false;
+
     this.gameElement = document.getElementById(this.element);
     this.board = new Board(this.width, this.height);
     const boardMid = (this.height - PADDLE_HEIGHT) / 2;
@@ -26,10 +27,25 @@ export default class Game {
     this.ball = new Ball(this.width, this.height, RADIUS);
     this.score1 = new Score(this.width/2 - 50, 30);
     this.score2 = new Score(this.width/2 + 25, 30);
+    this.keypressed = false;
+    this.witchkey = "";
+
+
+    document.addEventListener("keyup", (event) => {
+      this.keypressed = false;
+      this.witchkey = "";      
+
+
+    });
+
     document.addEventListener("keydown", (event) => {
+      this.keypressed = true;
+      this.witchkey = event.key; 
+      // console.log(event.key);
       if(event.key === KEYS.pause) {
         this.paused = !this.paused;
       }
+
     });
     // Other code goes here...
   }

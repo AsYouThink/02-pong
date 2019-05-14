@@ -7,6 +7,7 @@ export default class Ball {
     this.radius = radius;
     this.direction = 1;
     this.ping = new Audio(audioFile);
+    this.color = "#000";
            
     this.reset();
   }
@@ -22,6 +23,11 @@ export default class Ball {
     //   this.vx = Math.floor(Math.random() * 10 - 5);
     this.vx = this.direction * (6 - Math.abs(this.vy));
   }
+
+  
+
+
+
   wallCollision() {
       const hitsTop = this.y - this.radius <= 0;
       const hitsBottom = this.y + this.radius >= this.boardHeight;
@@ -45,6 +51,7 @@ export default class Ball {
     }
 
   paddleCollision(player1, player2) {
+      
       if (this.vx > 0) {
           const p2 = player2.getCoordinates();
           //check for hit with player2
@@ -53,6 +60,7 @@ export default class Ball {
             this.y <= p2.bottom) {
               this.vx = this.vx * -1;
               this.ping.play();
+              this.color = "purple";
           }
 
       } else {
@@ -63,13 +71,14 @@ export default class Ball {
             this.y <= p1.bottom){
               this.vx = this.vx * -1;
               this.ping.play();
+              this.color = "orange";
           }
       }
   }
 
   render(svg, player1, player2) {
     let circle = document.createElementNS(SVG_NS, 'circle');
-    circle.setAttributeNS(null, "fill", "white");
+    circle.setAttributeNS(null, "fill", this.color);
     circle.setAttributeNS(null, "cx", this.x);
     circle.setAttributeNS(null, "cy", this.y);
     circle.setAttributeNS(null, "r", this.radius);
