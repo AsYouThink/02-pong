@@ -7,7 +7,7 @@ export default class Ball {
     this.radius = radius;
     this.direction = 1;
     this.ping = new Audio(audioFile);
-    this.color = "#000";
+    this.color = "#fff";
            
     this.reset();
   }
@@ -17,7 +17,7 @@ export default class Ball {
         this.vx = 0;
         this.vy = 0;
       while (this.vy === 0){
-        this.vy = Math.floor(Math.random() * 10 - 5);
+        this.vy = Math.floor(Math.random() * 40 - 5);
       }
      
     //   this.vx = Math.floor(Math.random() * 10 - 5);
@@ -50,6 +50,12 @@ export default class Ball {
       
     }
 
+    random(min, max) {
+      let num = Math.floor(Math.random() * (max - min + 1)) + min;
+      return num;
+
+    }
+
   paddleCollision(player1, player2) {
       
       if (this.vx > 0) {
@@ -60,8 +66,11 @@ export default class Ball {
             this.y <= p2.bottom) {
               this.vx = this.vx * -1;
               this.ping.play();
-              this.color = "purple";
+              this.color = 'rgb(' + this.random(0,255) + ',' + this.random(0,255) + ',' + this.random(0,255) +')';
+
           }
+
+
 
       } else {
         const p1 = player1.getCoordinates();
@@ -71,7 +80,7 @@ export default class Ball {
             this.y <= p1.bottom){
               this.vx = this.vx * -1;
               this.ping.play();
-              this.color = "orange";
+              this.color = 'rgb(' + this.random(0,255) + ',' + this.random(0,255) + ',' + this.random(0,255) +')';
           }
       }
   }

@@ -10,6 +10,7 @@ import Board from './Board';
 import Paddle from './Paddle';
 import Ball from './Ball';
 import Score from './Score';
+import Win from './Win';
 
 export default class Game {
   constructor(element, width, height) {
@@ -25,24 +26,26 @@ export default class Game {
     const paddle2Gap = this.width - BOARD_GAP - PADDLE_WIDTH;
     this.paddle2 = new Paddle(this.height, PADDLE_WIDTH, PADDLE_HEIGHT, paddle2Gap, boardMid, KEYS.p2up, KEYS.p2down);
     this.ball = new Ball(this.width, this.height, RADIUS);
-    this.score1 = new Score(this.width/2 - 50, 30);
-    this.score2 = new Score(this.width/2 + 25, 30);
-    this.keypressed = false;
-    this.witchkey = "";
+    this.score1 = new Score(this.width / 2 - 50, 30);
+    this.score2 = new Score(this.width / 2 + 25, 30);
+    this.win = new Win(this.width / 2 - 93, this.height / 2);
+
+    // this.keypressed = false;
+    // this.witchkey = "";
 
 
     document.addEventListener("keyup", (event) => {
       this.keypressed = false;
-      this.witchkey = "";      
+      this.witchkey = event.key;
 
 
     });
 
     document.addEventListener("keydown", (event) => {
       this.keypressed = true;
-      this.witchkey = event.key; 
+      this.witchkey = event.key;
       // console.log(event.key);
-      if(event.key === KEYS.pause) {
+      if (event.key === KEYS.pause) {
         this.paused = !this.paused;
       }
 
@@ -52,8 +55,8 @@ export default class Game {
 
   render() {
     if (this.paused) {
-        return;
-      }
+      return;
+    }
     // More code goes here....
     this.gameElement.innerHTML = '';
     let svg = document.createElementNS(SVG_NS, 'svg');
@@ -67,5 +70,9 @@ export default class Game {
     this.ball.render(svg, this.paddle1, this.paddle2);
     this.score1.render(svg, this.paddle1.getScore());
     this.score2.render(svg, this.paddle2.getScore());
+    if (this.paddle1.getScore() >= 2 || this.paddle2.getScore() >= 2) {
+      this.paused = true;
+      this.win.render(svg)
+    }
   }
-  }
+}

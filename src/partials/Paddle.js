@@ -56,7 +56,7 @@ export default class Paddle {
         let rect = document.createElementNS(SVG_NS, 'rect');
         rect.setAttributeNS(null, "width", this.paddleWidth);
         rect.setAttributeNS(null, "height", this.paddleHeight);
-        rect.setAttributeNS(null, "fill", "#fff");
+        rect.setAttributeNS(null, "fill", "white");
         rect.setAttributeNS(null, "x", this.x);
         rect.setAttributeNS(null, "y", this.y);
         svg.appendChild(rect);

@@ -7,14 +7,14 @@ export const SVG_NS = "http://www.w3.org/2000/svg";
 //              RADIUS = 8,
 //              TEXT_SIZE = 30;
 
-export const PADDLE_WIDTH = 12, 
-             PADDLE_HEIGHT = 140, 
-             BOARD_GAP = 10,
-             SPEED = 20,
-             RADIUS = 12,
-             TEXT_SIZE = 30;             
+export const PADDLE_WIDTH = 12,
+    PADDLE_HEIGHT = 130,
+    BOARD_GAP = 12,
+    SPEED = 25,
+    RADIUS = 14,
+    TEXT_SIZE = 30;
 
-             
+
 
 export const KEYS = {
     p1up: 'a',
