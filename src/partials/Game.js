@@ -70,7 +70,7 @@ export default class Game {
     this.ball.render(svg, this.paddle1, this.paddle2);
     this.score1.render(svg, this.paddle1.getScore());
     this.score2.render(svg, this.paddle2.getScore());
-    if (this.paddle1.getScore() >= 2 || this.paddle2.getScore() >= 2) {
+    if (this.paddle1.getScore() >= 4 || this.paddle2.getScore() >= 4) {
       this.paused = true;
       this.win.render(svg)
     }
